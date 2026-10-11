@@ -2,7 +2,7 @@
 
 > **Last reviewed:** 2026-10-10 · **Last updated:** 2026-10-10 · **Change:** minor (crate table checked against `crates/`: effect count 306, VP9 inter frames) · **Target:** Adobe After Effects 2026
 
-EffectCraft is a stack of small Rust crates. The engine knows nothing about the user interface;
+Classic Motion is a stack of small Rust crates. The engine knows nothing about the user interface;
 the egui frontend, the command-line tool and the MCP server all sit on top of the same `Session`
 and drive it through the same command registry.
 
@@ -76,11 +76,11 @@ Everything animatable is a `Property` in the layer's `PropGroup` tree, addressed
 `transform/position`, `effects/#1/blurriness`, `masks/#1/feather`, or by `@uid`. Effects, masks,
 text animators and shape contents are groups in the same tree.
 
-A project file (`.ecproj`) is the project as readable JSON, headed by `savedBy` (the EffectCraft
+A project file (`.ecproj`) is the project as readable JSON, headed by `savedBy` (the Classic Motion
 version that wrote it) and `schema`; `.ecprojx` is the same data as XML (File ▸ Save a Copy As
 XML). Saving goes through `Project::to_file_json`, which checks that the text reads back before
 anything is written (JSON can't hold NaN or infinity), and files are written atomically. Opening
-a file that a newer EffectCraft saved shows a warning: fields this version doesn't know are
+a file that a newer Classic Motion saved shows a warning: fields this version doesn't know are
 dropped if it saves the project. Save, Save As, Save a Copy and Increment and Save keep the
 file's format (`.ecprojx` stays XML).
 
@@ -334,7 +334,7 @@ renderer preference; materialized CPU frames remain usable and late GPU textures
 to the preview cache. Scoped allocation failures retain the adaptive budget/CPU retry behavior.
 
 **Recovery boundary:** the host installs handlers through eframe's CreationContext, after egui's
-presentation pipelines but before EffectCraft's pipelines. This does not cover that earlier egui
+presentation pipelines but before Classic Motion's pipelines. This does not cover that earlier egui
 startup window. eframe 0.36.2 supports lost-surface recreation, not replacing its live device and
 all presentation resources. Device loss therefore requires restarting the presentation backend;
 CPU compositing alone cannot restore that display. No automatic restart or persistent safe-mode

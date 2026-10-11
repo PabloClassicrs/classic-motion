@@ -1,4 +1,4 @@
-# Releasing EffectCraft
+# Releasing Classic Motion
 
 Every push to the `release` branch runs [`.github/workflows/release.yml`](../.github/workflows/release.yml).
 It builds signed installers for macOS and Windows, packages for Linux and FreeBSD, and the web
@@ -6,7 +6,7 @@ build, then creates or updates a
 **draft** GitHub Release named `EffectCraft v<version>`. Nobody sees a draft until a maintainer
 publishes it.
 
-User-facing names say **EffectCraft**. Files, binaries and ids stay lowercase
+User-facing names say **Classic Motion**. Files, binaries and ids stay lowercase
 (`effectcraft-<version>-<platform>-<arch>.<ext>`).
 
 ## Cutting a release

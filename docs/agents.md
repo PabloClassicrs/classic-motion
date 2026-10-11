@@ -1,6 +1,6 @@
-# Driving EffectCraft from agents
+# Driving Classic Motion from agents
 
-Everything in EffectCraft is an engine command with a stable id and JSON params. Menus, shortcuts,
+Everything in Classic Motion is an engine command with a stable id and JSON params. Menus, shortcuts,
 panel gestures, the CLI, the control channel and MCP all go through the same commands, so anything a
 user can do, an agent can do too. There are three ways in:
 

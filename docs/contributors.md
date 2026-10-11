@@ -21,7 +21,7 @@ this page is the local copy of the decision.
   first or last commit date. The name toggle cycles **Username → Display name → Real name**; a
   missing name falls back to `@username`. Alphabetical sorting is case-insensitive and ignores the `@`.
 
-## In EffectCraft
+## In Classic Motion
 
 - The About window is `about()` in `crates/ui-egui/src/panels/dialogs.rs` (`app.about`, or click the header logo); automation ids `about.tab.*` and `about.credits.*`.
 
