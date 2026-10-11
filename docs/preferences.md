@@ -2,7 +2,7 @@
 
 ## Settings (Preferences)
 
-EffectCraft ▸ Settings (macOS) or Edit ▸ Preferences (Windows/Linux), `Cmd+Alt+;`. The dialog has
+Classic Motion ▸ Settings (macOS) or Edit ▸ Preferences (Windows/Linux), `Cmd+Alt+;`. The dialog has
 After Effects 2026's pages (General, Startup & Repair, Project, Composition, Previews, Appearance,
 Grids & Guides, Labels, Type, Import, Export, Audio, Disk, Memory & CPU, Video, 3D, Scripting &
 Expressions) with OK, Cancel, Previous and Next. Older page names still open the right page
@@ -29,7 +29,7 @@ Commands (CLI, MCP, control channel):
 
 ### Settings that change behaviour
 
-- `general.language`: interface language (`system` / `en` / `ja` / `zh-hans` / `zh-hant` / `uk` / `es` / `pt-br`), Settings ▸ General ▸ Language; menu labels change immediately. `system` (Match System, the default) follows the operating system's interface language where EffectCraft has a translation and is English otherwise: a Simplified Chinese locale (`zh`, `zh-CN`, `zh_CN.UTF-8`, `zh-Hans-CN`, `zh-SG`) selects `zh-hans`, a Traditional one (`zh-TW`, `zh-HK`, `zh-Hant`, `zh_MO`) selects `zh-hant`, a Ukrainian one (`uk`, `uk-UA`, `uk_UA.UTF-8`) selects `uk`, a Spanish one (`es`, `es-ES`, `es_MX.UTF-8`) selects `es`, a Portuguese one (`pt`, `pt-BR`, `pt_PT.UTF-8`) selects `pt-br`; the browser build stays in English with it. Choose **Español** or **Português (Brasil)** for Spanish or Brazilian Portuguese menus (panels stay in English for now); choose **Українська** for Ukrainian menus and cataloged panel, dialog, button and tooltip text; Ukrainian uses the bundled UI fonts. Native Japanese, Simplified and Traditional Chinese UI uses installed system fonts; the web host must supply a Japanese font. The same setting picks the CJK fallback for the interface *and* the Han preference of the text engine, so the composition's own text is drawn with the same language's glyph forms (the text engine's preference is process-global); swapping the language reinstalls the fonts, so it applies without a restart. Two catalogs back the text: the menus are keyed by `(command, English label)` (`crates/ui-egui/src/i18n.rs`), and the rest of the interface - panels, dialogs, buttons, tooltips - is keyed by its English source string (`crates/ui-egui/src/i18n/ui.rs`, with rows for Japanese, Simplified and Traditional Chinese and Ukrainian), where a panel writes `tr("Rename")`, or `tr_args("Proxy Use: {}", &[&quality])` when the row carries a value. A row that is missing falls back to English, so a new string shows up untranslated rather than empty; the tests in that module fail on an unused row and on a hard-coded string in a converted panel.
+- `general.language`: interface language (`system` / `en` / `ja` / `zh-hans` / `zh-hant` / `uk` / `es` / `pt-br`), Settings ▸ General ▸ Language; menu labels change immediately. `system` (Match System, the default) follows the operating system's interface language where Classic Motion has a translation and is English otherwise: a Simplified Chinese locale (`zh`, `zh-CN`, `zh_CN.UTF-8`, `zh-Hans-CN`, `zh-SG`) selects `zh-hans`, a Traditional one (`zh-TW`, `zh-HK`, `zh-Hant`, `zh_MO`) selects `zh-hant`, a Ukrainian one (`uk`, `uk-UA`, `uk_UA.UTF-8`) selects `uk`, a Spanish one (`es`, `es-ES`, `es_MX.UTF-8`) selects `es`, a Portuguese one (`pt`, `pt-BR`, `pt_PT.UTF-8`) selects `pt-br`; the browser build stays in English with it. Choose **Español** or **Português (Brasil)** for Spanish or Brazilian Portuguese menus (panels stay in English for now); choose **Українська** for Ukrainian menus and cataloged panel, dialog, button and tooltip text; Ukrainian uses the bundled UI fonts. Native Japanese, Simplified and Traditional Chinese UI uses installed system fonts; the web host must supply a Japanese font. The same setting picks the CJK fallback for the interface *and* the Han preference of the text engine, so the composition's own text is drawn with the same language's glyph forms (the text engine's preference is process-global); swapping the language reinstalls the fonts, so it applies without a restart. Two catalogs back the text: the menus are keyed by `(command, English label)` (`crates/ui-egui/src/i18n.rs`), and the rest of the interface - panels, dialogs, buttons, tooltips - is keyed by its English source string (`crates/ui-egui/src/i18n/ui.rs`, with rows for Japanese, Simplified and Traditional Chinese and Ukrainian), where a panel writes `tr("Rename")`, or `tr_args("Proxy Use: {}", &[&quality])` when the row carries a value. A row that is missing falls back to English, so a new string shows up untranslated rather than empty; the tests in that module fail on an unused row and on a hard-coded string in a converted panel.
 - `general.undoLevels`: Levels of Undo
 - `general.pathPointSize`: Path Point and Handle Size
 - `general.recentItems`: Recent Projects Shown
@@ -56,7 +56,7 @@ Commands (CLI, MCP, control channel):
 - `previews.fastPreviews`: Fast Previews (Draft 3D, Faster Effects)
 - `appearance.appearanceMode`: Appearance Mode (`auto` / `dark` / `light`). `auto` (Sync with System) follows the operating system's light or dark appearance while the app runs: on Linux the desktop app reads the XDG desktop portal (`org.freedesktop.appearance` `color-scheme`) once and then listens for its `SettingChanged` signal on a worker thread, repainting only when the value changes (nothing polls); `gsettings` runs at most once at start-up, by absolute path, when the portal gives no answer. Elsewhere it uses what the window system reports. With no answer it shows the dark theme. New installs stay `dark`; Sync with System is opt-in. The Tools bar's appearance button (a monitor, sun or moon) cycles Sync with System, Light and Dark (`view.theme.toggle`, Next Appearance Mode).
 - `appearance.darkTheme`: Dark Theme (`dark` / `darker`), shown in dark appearance
-- `appearance.lightTheme`: Light Theme (`light`), shown in light appearance. Settings ▸ Appearance shows the mode above a light and a dark theme card, each with a preview of the EffectCraft window in that theme.
+- `appearance.lightTheme`: Light Theme (`light`), shown in light appearance. Settings ▸ Appearance shows the mode above a light and a dark theme card, each with a preview of the Classic Motion window in that theme.
 - `appearance.theme`: the single theme from before appearance modes, kept for older settings files and automation. A saved file with only `theme` loads as a fixed Dark or Light mode showing it; setting it (`prefs.set`, `ui.set {"theme": …}`, `view.theme.dark|darker|light`) selects that theme and fixes the mode to its family. While the mode is Dark or Light it mirrors the theme in use.
 - `appearance.brightness`: Brightness
 - `appearance.uiScale`: UI Scale, the size of the whole interface (75–200 %, on top of the
@@ -165,11 +165,11 @@ Commands (CLI, MCP, control channel):
 
 ### Display-only settings
 
-These rows are in the dialog for After Effects parity and are stored, but have no EffectCraft
+These rows are in the dialog for After Effects parity and are stored, but have no Classic Motion
 behaviour to change. `prefs.pages` reports them with `"live": false`; a test keeps this list in
 step with the schema.
 
-- `general.useSystemColorPicker`: EffectCraft has one colour picker on every platform and the
+- `general.useSystemColorPicker`: Classic Motion has one colour picker on every platform and the
   web; there is no pure-Rust way to open the system colour panels.
 - `composition.hardwareAcceleratePanels`: the Composition, Layer and Footage panels are always
   drawn by the GPU (egui on wgpu).

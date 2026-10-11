@@ -2,7 +2,7 @@
 
 > **Last reviewed:** 2026-10-10 · **Last updated:** 2026-10-10 · **Change:** major (first hardware parity document, from the code and open issues against After Effects 2026 26.5) · **Target:** Adobe After Effects 2026
 
-Each piece of hardware After Effects uses, per platform, against EffectCraft. Ours comes from the
+Each piece of hardware After Effects uses, per platform, against Classic Motion. Ours comes from the
 code at `origin/main` 1446e27 (`crates/gpu`, `crates/render`, `crates/ui-egui`) and the issue
 tracker; After Effects' from its documentation (Mercury GPU Acceleration, Multi-Frame Rendering,
 hardware-accelerated decode and encode, Mercury Transmit) and its bundle.
@@ -11,7 +11,7 @@ hardware-accelerated decode and encode, Mercury Transmit) and its bundle.
 in the browser too; hardware video decode and encode, video-out devices, tablets and multiple
 monitors are missing, and two GPU start-up failures are open.
 
-| Feature | After Effects 2026 | EffectCraft macOS | Windows | Linux | Web | Notes / evidence |
+| Feature | After Effects 2026 | Classic Motion macOS | Windows | Linux | Web | Notes / evidence |
 |---|---|---|---|---|---|---|
 | GPU compositing and effects | Mercury GPU (Metal; CUDA / OpenCL / DirectX on Windows) | yes, Metal via wgpu | Vulkan yes; **Direct3D 12 fails** (FXC can't compile the `pointwise` kernel, #613) | Vulkan | WebGPU, in frame workers | 280 of 306 effects on the GPU, checked against the CPU renderer; Fractal and the analysis/tool effects stay on the CPU ([effects-parity.md](effects-parity.md)) |
 | CPU fallback and device-loss recovery | yes | yes | yes; Windows ARM64 Adreno panics after device loss (#591) | yes | yes (#225 fixed) | Out of video memory falls back to the CPU (#106) |

@@ -2,7 +2,7 @@
 
 > **Last reviewed:** 2026-10-10 · **Last updated:** 2026-10-10 · **Change:** major (first UI parity checklist against After Effects 2026 26.5) · **Target:** Adobe After Effects 2026
 
-How closely EffectCraft's interaction matches After Effects: tools, handles, snapping, nudging,
+How closely Classic Motion's interaction matches After Effects: tools, handles, snapping, nudging,
 modifier keys, shortcuts, drag behaviour, numeric entry, panels, context menus and feel. Evidence
 is the code at `origin/main` 1446e27, the 42 scripted UI test files in `crates/ui-egui/tests`
 (real pointer and keyboard events, run headless), [fidelity/workflow-checks.md](fidelity/workflow-checks.md)

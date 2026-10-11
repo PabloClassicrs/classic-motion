@@ -19,7 +19,7 @@ use effectcraft_time::Tick;
 use serde_json::{Value, json};
 
 use super::{CommandSpec, b_p, bad, comp_id, has_comp, layer_p, selected_leaf_props, str_p};
-use crate::{EngineError, Result, Session, cmd, query};
+use crate::{EngineError, Result, Session, cmd, links::APP_NAME, query};
 
 /// Format id written into template manifests.
 pub const TEMPLATE_FORMAT: &str = "effectcraft-template";
@@ -847,7 +847,7 @@ fn export_template(s: &mut Session, p: &Value) -> Result<Value> {
     let manifest = json!({
         "format": TEMPLATE_FORMAT,
         "version": TEMPLATE_VERSION,
-        "generator": format!("EffectCraft {}", env!("CARGO_PKG_VERSION")),
+        "generator": format!("{} {}", APP_NAME, env!("CARGO_PKG_VERSION")),
         "name": name,
         "comp": cid.0,
         "compName": comp_name,
@@ -878,12 +878,13 @@ pub fn read_template(bytes: &[u8]) -> std::result::Result<(Value, Project, Vec<(
     let entries = effectcraft_lottie::zip::read_stored(bytes);
     let get = |n: &str| entries.iter().find(|(k, _)| k == n).map(|(_, v)| v.clone());
     let manifest: Value =
-        serde_json::from_slice(&get("manifest.json").ok_or("not an EffectCraft template (no manifest.json)")?).map_err(|e| format!("manifest.json: {e}"))?;
+        serde_json::from_slice(&get("manifest.json").ok_or_else(|| format!("not a {APP_NAME} template (no manifest.json)"))?)
+            .map_err(|e| format!("manifest.json: {e}"))?;
     if manifest.get("format").and_then(Value::as_str) != Some(TEMPLATE_FORMAT) {
-        return Err("not an EffectCraft template".into());
+        return Err(format!("not a {APP_NAME} template"));
     }
     if manifest.get("version").and_then(Value::as_u64).unwrap_or(0) > TEMPLATE_VERSION as u64 {
-        return Err("the template was made by a newer EffectCraft".into());
+        return Err(format!("the template was made by a newer {APP_NAME}"));
     }
     let text = String::from_utf8(get("project.ecproj").ok_or("template has no project.ecproj")?).map_err(|e| e.to_string())?;
     let mut project = Project::from_json(&text).map_err(|e| e.to_string())?;

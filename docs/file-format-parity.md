@@ -2,7 +2,7 @@
 
 > **Last reviewed:** 2026-10-10 · **Last updated:** 2026-10-10 · **Change:** major (first per-format table, measured against the After Effects 2026 26.5 bundle and this repository's import/export registries) · **Target:** Adobe After Effects 2026
 
-Every format After Effects reads or writes, with EffectCraft's support. After Effects' list comes
+Every format After Effects reads or writes, with Classic Motion's support. After Effects' list comes
 from its installed bundle (26.5.0.89: `Info.plist` `CFBundleDocumentTypes`, `Plug-ins/Format`,
 `Resources/usd_plugins`) and its public documentation; ours from `crates/media/src/lib.rs`
 (`STILL_EXTENSIONS`, `VIDEO_EXTENSIONS`, `MODEL_EXTENSIONS`, FilmCraft's `AUDIO_EXTENSIONS`),
@@ -20,7 +20,7 @@ trips and renders, checked by tests, not against After Effects), **partial** (na
 
 ## After Effects' own formats
 
-| Format | After Effects | EffectCraft read | Write | Fidelity / notes | Tested by |
+| Format | After Effects | Classic Motion read | Write | Fidelity / notes | Tested by |
 |---|---|---|---|---|---|
 | Project `.aep` | R/W (native) | none | none | Main file format; needs an owner decision on clean-room scope (#190, #248: py-aep as an external converter). Blocks beta | — |
 | XML project `.aepx` | R/W | none | none | Same decision as `.aep` | — |
