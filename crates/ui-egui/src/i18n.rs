@@ -228,8 +228,8 @@ pub(crate) fn submenu(app: &EffectcraftApp, source: &str, shown: String) -> Stri
 /// Chinese After Effects documentation and the catalogs the sibling Craft apps ship; see the
 /// pull request for the rows taken from #321.
 const SIMPLIFIED_CHINESE: &[(&str, &str, &str)] = &[
-    ("", "EffectCraft", "EffectCraft"),
-    ("app.about", "About EffectCraft...", "关于 EffectCraft..."),
+    ("", "Classic Motion", "Classic Motion"),
+    ("app.about", "About Classic Motion...", "关于 Classic Motion..."),
     ("", "Settings...", "设置..."),
     ("app.settings", "General...", "常规..."),
     ("app.settings", "Startup & Repair...", "启动和修复..."),
@@ -248,10 +248,10 @@ const SIMPLIFIED_CHINESE: &[(&str, &str, &str)] = &[
     ("app.settings", "Video...", "视频..."),
     ("app.settings", "3D...", "3D..."),
     ("app.settings", "Scripting & Expressions...", "脚本和表达式..."),
-    ("app.hide", "Hide EffectCraft", "隐藏 EffectCraft"),
+    ("app.hide", "Hide Classic Motion", "隐藏 Classic Motion"),
     ("app.hideOthers", "Hide Others", "隐藏其他"),
     ("app.showAll", "Show All", "全部显示"),
-    ("app.quit", "Quit EffectCraft", "退出 EffectCraft"),
+    ("app.quit", "Quit Classic Motion", "退出 Classic Motion"),
     ("", "File", "文件"),
     ("", "New", "新建"),
     ("file.newProject", "New Project", "新建项目"),
@@ -829,7 +829,7 @@ const SIMPLIFIED_CHINESE: &[(&str, &str, &str)] = &[
     ("window.panel", "Create Nulls From Paths", "从路径创建空对象"),
     ("window.panel", "VR Comp Editor", "VR 合成编辑器"),
     ("", "Help", "帮助"),
-    ("help.docs", "EffectCraft Help...", "EffectCraft 帮助..."),
+    ("help.docs", "Classic Motion Help...", "Classic Motion 帮助..."),
     ("help.docs", "Scripting Help...", "脚本帮助..."),
     ("help.docs", "Expression Reference...", "表达式引用..."),
     ("help.docs", "Effect Reference...", "效果参考..."),
@@ -844,7 +844,7 @@ const SIMPLIFIED_CHINESE: &[(&str, &str, &str)] = &[
     ("help.reportIssue", "Provide Feedback...", "提供反馈..."),
     ("help.website", "ArtCraft Website", "ArtCraft 网站"),
     ("help.appPage", "EffectCraft Home Page", "EffectCraft 主页"),
-    ("help.github", "EffectCraft on GitHub", "GitHub 上的 EffectCraft"),
+    ("help.github", "Classic Motion on GitHub", "GitHub 上的 Classic Motion"),
     ("file.openDemoProject", "Open Demo Project", "打开示例项目"),
 ];
 
@@ -852,8 +852,8 @@ const SIMPLIFIED_CHINESE: &[(&str, &str, &str)] = &[
 /// entry per fixed menu row of the engine's menu tree, mirroring `SIMPLIFIED_CHINESE` in the
 /// vocabulary the sibling Craft apps' zh-hant catalogs use.
 const TRADITIONAL_CHINESE: &[(&str, &str, &str)] = &[
-    ("", "EffectCraft", "EffectCraft"),
-    ("app.about", "About EffectCraft...", "關於 EffectCraft..."),
+    ("", "Classic Motion", "Classic Motion"),
+    ("app.about", "About Classic Motion...", "關於 Classic Motion..."),
     ("", "Settings...", "設定..."),
     ("app.settings", "General...", "一般..."),
     ("app.settings", "Startup & Repair...", "啟動和修復..."),
@@ -872,10 +872,10 @@ const TRADITIONAL_CHINESE: &[(&str, &str, &str)] = &[
     ("app.settings", "Video...", "視訊..."),
     ("app.settings", "3D...", "3D..."),
     ("app.settings", "Scripting & Expressions...", "指令碼和運算式..."),
-    ("app.hide", "Hide EffectCraft", "隱藏 EffectCraft"),
+    ("app.hide", "Hide Classic Motion", "隱藏 Classic Motion"),
     ("app.hideOthers", "Hide Others", "隱藏其他"),
     ("app.showAll", "Show All", "全部顯示"),
-    ("app.quit", "Quit EffectCraft", "結束 EffectCraft"),
+    ("app.quit", "Quit Classic Motion", "結束 Classic Motion"),
     ("", "File", "檔案"),
     ("", "New", "新增"),
     ("file.newProject", "New Project", "新增專案"),
@@ -1453,7 +1453,7 @@ const TRADITIONAL_CHINESE: &[(&str, &str, &str)] = &[
     ("window.panel", "Create Nulls From Paths", "從路徑建立空物件"),
     ("window.panel", "VR Comp Editor", "VR 合成編輯器"),
     ("", "Help", "說明"),
-    ("help.docs", "EffectCraft Help...", "EffectCraft 說明..."),
+    ("help.docs", "Classic Motion Help...", "Classic Motion 說明..."),
     ("help.docs", "Scripting Help...", "指令碼說明..."),
     ("help.docs", "Expression Reference...", "運算式參考..."),
     ("help.docs", "Effect Reference...", "效果參考..."),
@@ -1468,13 +1468,13 @@ const TRADITIONAL_CHINESE: &[(&str, &str, &str)] = &[
     ("help.reportIssue", "Provide Feedback...", "提供意見..."),
     ("help.website", "ArtCraft Website", "ArtCraft 網站"),
     ("help.appPage", "EffectCraft Home Page", "EffectCraft 首頁"),
-    ("help.github", "EffectCraft on GitHub", "GitHub 上的 EffectCraft"),
+    ("help.github", "Classic Motion on GitHub", "GitHub 上的 Classic Motion"),
     ("file.openDemoProject", "Open Demo Project", "開啟範例專案"),
 ];
 
 const JAPANESE: &[(&str, &str, &str)] = &[
-    ("", "EffectCraft", "EffectCraft"),
-    ("app.about", "About EffectCraft...", "EffectCraftについて..."),
+    ("", "Classic Motion", "Classic Motion"),
+    ("app.about", "About Classic Motion...", "Classic Motionについて..."),
     ("", "Settings...", "設定..."),
     ("app.settings", "General...", "一般..."),
     ("app.settings", "Startup & Repair...", "起動と修復..."),
@@ -1493,10 +1493,10 @@ const JAPANESE: &[(&str, &str, &str)] = &[
     ("app.settings", "Video...", "ビデオ..."),
     ("app.settings", "3D...", "3D..."),
     ("app.settings", "Scripting & Expressions...", "スクリプトとエクスプレッション..."),
-    ("app.hide", "Hide EffectCraft", "EffectCraftを隠す"),
+    ("app.hide", "Hide Classic Motion", "Classic Motionを隠す"),
     ("app.hideOthers", "Hide Others", "ほかを隠す"),
     ("app.showAll", "Show All", "すべてを表示"),
-    ("app.quit", "Quit EffectCraft", "EffectCraftを終了"),
+    ("app.quit", "Quit Classic Motion", "Classic Motionを終了"),
     ("", "File", "ファイル"),
     ("", "New", "新規"),
     ("file.newProject", "New Project", "新規プロジェクト"),
@@ -2074,7 +2074,7 @@ const JAPANESE: &[(&str, &str, &str)] = &[
     ("window.panel", "Create Nulls From Paths", "パスからヌルを作成"),
     ("window.panel", "VR Comp Editor", "VRコンポジションエディター"),
     ("", "Help", "ヘルプ"),
-    ("help.docs", "EffectCraft Help...", "EffectCraftヘルプ..."),
+    ("help.docs", "Classic Motion Help...", "Classic Motionヘルプ..."),
     ("help.docs", "Scripting Help...", "スクリプトヘルプ..."),
     ("help.docs", "Expression Reference...", "エクスプレッションリファレンス..."),
     ("help.docs", "Effect Reference...", "エフェクトリファレンス..."),
@@ -2089,7 +2089,7 @@ const JAPANESE: &[(&str, &str, &str)] = &[
     ("help.reportIssue", "Provide Feedback...", "フィードバックを送信..."),
     ("help.website", "ArtCraft Website", "ArtCraftウェブサイト"),
     ("help.appPage", "EffectCraft Home Page", "EffectCraftホームページ"),
-    ("help.github", "EffectCraft on GitHub", "GitHubのEffectCraft"),
+    ("help.github", "Classic Motion on GitHub", "GitHubのClassic Motion"),
     ("file.openDemoProject", "Open Demo Project", "デモプロジェクトを開く"),
 ];
 
@@ -2097,8 +2097,8 @@ const JAPANESE: &[(&str, &str, &str)] = &[
 /// Ukrainian motion-graphics vocabulary. Product names and technical identifiers stay verbatim.
 /// The (command, source) keys match the other catalogs; no proprietary localization was used.
 const UKRAINIAN: &[(&str, &str, &str)] = &[
-    ("", "EffectCraft", "EffectCraft"),
-    ("app.about", "About EffectCraft...", "Про EffectCraft..."),
+    ("", "Classic Motion", "Classic Motion"),
+    ("app.about", "About Classic Motion...", "Про Classic Motion..."),
     ("", "Settings...", "Налаштування..."),
     ("app.settings", "General...", "Загальні..."),
     ("app.settings", "Startup & Repair...", "Запуск і відновлення..."),
@@ -2117,10 +2117,10 @@ const UKRAINIAN: &[(&str, &str, &str)] = &[
     ("app.settings", "Video...", "Відео..."),
     ("app.settings", "3D...", "3D..."),
     ("app.settings", "Scripting & Expressions...", "Скрипти та вирази..."),
-    ("app.hide", "Hide EffectCraft", "Приховати EffectCraft"),
+    ("app.hide", "Hide Classic Motion", "Приховати Classic Motion"),
     ("app.hideOthers", "Hide Others", "Приховати решту"),
     ("app.showAll", "Show All", "Показати все"),
-    ("app.quit", "Quit EffectCraft", "Вийти з EffectCraft"),
+    ("app.quit", "Quit Classic Motion", "Вийти з Classic Motion"),
     ("", "File", "Файл"),
     ("", "New", "Створити"),
     ("file.newProject", "New Project", "Новий проєкт"),
@@ -2698,7 +2698,7 @@ const UKRAINIAN: &[(&str, &str, &str)] = &[
     ("window.panel", "Create Nulls From Paths", "Створення нульових об’єктів із контурів"),
     ("window.panel", "VR Comp Editor", "Редактор композицій VR"),
     ("", "Help", "Довідка"),
-    ("help.docs", "EffectCraft Help...", "Довідка EffectCraft..."),
+    ("help.docs", "Classic Motion Help...", "Довідка Classic Motion..."),
     ("help.docs", "Scripting Help...", "Довідка зі скриптів..."),
     ("help.docs", "Expression Reference...", "Довідник виразів..."),
     ("help.docs", "Effect Reference...", "Довідник ефектів..."),
@@ -2713,7 +2713,7 @@ const UKRAINIAN: &[(&str, &str, &str)] = &[
     ("help.reportIssue", "Provide Feedback...", "Надіслати відгук..."),
     ("help.website", "ArtCraft Website", "Вебсайт ArtCraft"),
     ("help.appPage", "EffectCraft Home Page", "Домашня сторінка EffectCraft"),
-    ("help.github", "EffectCraft on GitHub", "EffectCraft на GitHub"),
+    ("help.github", "Classic Motion on GitHub", "Classic Motion на GitHub"),
     ("file.openDemoProject", "Open Demo Project", "Відкрити демонстраційний проєкт"),
 ];
 
@@ -2722,8 +2722,8 @@ const UKRAINIAN: &[(&str, &str, &str)] = &[
 /// Wording follows Adobe's Spanish After Effects documentation (helpx.adobe.com/es) where it
 /// names the feature, and macOS Spanish for the app menu.
 const SPANISH: &[(&str, &str, &str)] = &[
-    ("", "EffectCraft", "EffectCraft"),
-    ("app.about", "About EffectCraft...", "Acerca de EffectCraft..."),
+    ("", "Classic Motion", "Classic Motion"),
+    ("app.about", "About Classic Motion...", "Acerca de Classic Motion..."),
     ("", "Settings...", "Ajustes..."),
     ("app.settings", "General...", "General..."),
     ("app.settings", "Startup & Repair...", "Inicio y reparación..."),
@@ -2742,10 +2742,10 @@ const SPANISH: &[(&str, &str, &str)] = &[
     ("app.settings", "Video...", "Vídeo..."),
     ("app.settings", "3D...", "3D..."),
     ("app.settings", "Scripting & Expressions...", "Scripts y expresiones..."),
-    ("app.hide", "Hide EffectCraft", "Ocultar EffectCraft"),
+    ("app.hide", "Hide Classic Motion", "Ocultar Classic Motion"),
     ("app.hideOthers", "Hide Others", "Ocultar otros"),
     ("app.showAll", "Show All", "Mostrar todo"),
-    ("app.quit", "Quit EffectCraft", "Salir de EffectCraft"),
+    ("app.quit", "Quit Classic Motion", "Salir de Classic Motion"),
     ("", "File", "Archivo"),
     ("", "New", "Nuevo"),
     ("file.newProject", "New Project", "Nuevo proyecto"),
@@ -3323,7 +3323,7 @@ const SPANISH: &[(&str, &str, &str)] = &[
     ("window.panel", "Create Nulls From Paths", "Crear nulos a partir de trazados"),
     ("window.panel", "VR Comp Editor", "Editor de composición de RV"),
     ("", "Help", "Ayuda"),
-    ("help.docs", "EffectCraft Help...", "Ayuda de EffectCraft..."),
+    ("help.docs", "Classic Motion Help...", "Ayuda de Classic Motion..."),
     ("help.docs", "Scripting Help...", "Ayuda de scripts..."),
     ("help.docs", "Expression Reference...", "Referencia de expresiones..."),
     ("help.docs", "Effect Reference...", "Referencia de efectos..."),
@@ -3338,15 +3338,15 @@ const SPANISH: &[(&str, &str, &str)] = &[
     ("help.reportIssue", "Provide Feedback...", "Enviar comentarios..."),
     ("help.website", "ArtCraft Website", "Sitio web de ArtCraft"),
     ("help.appPage", "EffectCraft Home Page", "Página de inicio de EffectCraft"),
-    ("help.github", "EffectCraft on GitHub", "EffectCraft en GitHub"),
+    ("help.github", "Classic Motion on GitHub", "Classic Motion en GitHub"),
     ("file.openDemoProject", "Open Demo Project", "Abrir proyecto de demostración"),
 ];
 
 /// Brazilian Portuguese: the same (command, English label) keys as `JAPANESE`, one entry
 /// per fixed menu row of the engine's menu tree.
 const PORTUGUESE: &[(&str, &str, &str)] = &[
-    ("", "EffectCraft", "EffectCraft"),
-    ("app.about", "About EffectCraft...", "Sobre o EffectCraft..."),
+    ("", "Classic Motion", "Classic Motion"),
+    ("app.about", "About Classic Motion...", "Sobre o Classic Motion..."),
     ("", "Settings...", "Configurações..."),
     ("app.settings", "General...", "Geral..."),
     ("app.settings", "Startup & Repair...", "Inicialização e reparo..."),
@@ -3365,10 +3365,10 @@ const PORTUGUESE: &[(&str, &str, &str)] = &[
     ("app.settings", "Video...", "Vídeo..."),
     ("app.settings", "3D...", "3D..."),
     ("app.settings", "Scripting & Expressions...", "Scripts e expressões..."),
-    ("app.hide", "Hide EffectCraft", "Ocultar EffectCraft"),
+    ("app.hide", "Hide Classic Motion", "Ocultar Classic Motion"),
     ("app.hideOthers", "Hide Others", "Ocultar outros"),
     ("app.showAll", "Show All", "Mostrar tudo"),
-    ("app.quit", "Quit EffectCraft", "Sair do EffectCraft"),
+    ("app.quit", "Quit Classic Motion", "Sair do Classic Motion"),
     ("", "File", "Arquivo"),
     ("", "New", "Novo"),
     ("file.newProject", "New Project", "Novo projeto"),
@@ -3946,7 +3946,7 @@ const PORTUGUESE: &[(&str, &str, &str)] = &[
     ("window.panel", "Create Nulls From Paths", "Criar nulls a partir de caminhos"),
     ("window.panel", "VR Comp Editor", "Editor de composição VR"),
     ("", "Help", "Ajuda"),
-    ("help.docs", "EffectCraft Help...", "Ajuda do EffectCraft..."),
+    ("help.docs", "Classic Motion Help...", "Ajuda do Classic Motion..."),
     ("help.docs", "Scripting Help...", "Ajuda de scripting..."),
     ("help.docs", "Expression Reference...", "Referência de expressões..."),
     ("help.docs", "Effect Reference...", "Referência de efeitos..."),
@@ -3961,7 +3961,7 @@ const PORTUGUESE: &[(&str, &str, &str)] = &[
     ("help.reportIssue", "Provide Feedback...", "Enviar comentários..."),
     ("help.website", "ArtCraft Website", "Site do ArtCraft"),
     ("help.appPage", "EffectCraft Home Page", "Página inicial do EffectCraft"),
-    ("help.github", "EffectCraft on GitHub", "EffectCraft no GitHub"),
+    ("help.github", "Classic Motion on GitHub", "Classic Motion no GitHub"),
     ("file.openDemoProject", "Open Demo Project", "Abrir projeto de demonstração"),
 ];
 
