@@ -1212,17 +1212,13 @@ Help
   Keyboard Shortcuts... | app.keyboardShortcuts
   ---
   In-App Tutorials... | help.inAppTutorials
-  Online Tutorials... | help.onlineTutorials
   ---
   System Compatibility Report... | help.systemReport
   Enable Logging | help.enableLogging
   Reveal Logging File | help.revealLogFile
   ---
-  Join the Community Discord... | help.discord
   Provide Feedback... | help.reportIssue
   ---
-  Website | help.website
-  Classic Motion Home Page | help.appPage
   Classic Motion on GitHub | help.github
   Open Demo Project | file.openDemoProject
   [!mac] ---

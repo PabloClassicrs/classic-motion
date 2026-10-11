@@ -11,11 +11,6 @@ fn open(s: &mut Session, url: String) -> Result<Value> {
     Ok(json!({"url": url}))
 }
 
-fn sibling(s: &mut Session, p: &Value) -> Result<Value> {
-    let slug = str_p(p, "app").unwrap_or("photocraft").to_ascii_lowercase();
-    if str_p(p, "kind") == Some("github") { open(s, links::github_of(&slug)) } else { open(s, links::page_of(&slug)) }
-}
-
 /// Help ▸ Classic Motion Help / Scripting Help / Expression Reference / Effect Reference.
 fn docs(s: &mut Session, p: &Value) -> Result<Value> {
     let page = match str_p(p, "page").unwrap_or("help") {
@@ -31,25 +26,16 @@ fn docs(s: &mut Session, p: &Value) -> Result<Value> {
 pub fn specs() -> Vec<CommandSpec> {
     vec![
         cmd!("help.docs", "Classic Motion Help...", [], Some("F1"), "{page?: help|scripting|expressions|effects|agents}", always, docs),
-        cmd!("help.discord", "Join the Community Discord...", ["Help"], None, "{}", always, |s, _| open(s, links::DISCORD.into())),
-        cmd!("help.website", "Website", ["Help"], None, "{}", always, |s, _| open(s, links::WEBSITE.into())),
-        cmd!("help.appPage", "Classic Motion Home Page", ["Help"], None, "{}", always, |s, _| open(s, links::APP_PAGE.into())),
+        cmd!("help.discord", "Join the Community Discord...", ["Help"], None, "{}", always, |_, _| Ok(json!({}))),
+        cmd!("help.website", "Website", ["Help"], None, "{}", always, |_, _| Ok(json!({}))),
+        cmd!("help.appPage", "Classic Motion Home Page", ["Help"], None, "{}", always, |_, _| Ok(json!({}))),
         cmd!("help.github", "Classic Motion on GitHub", ["Help"], None, "{}", always, |s, _| open(s, links::GITHUB.into())),
-        cmd!("help.onlineTutorials", "Online Tutorials...", ["Help"], None, "{}", always, |s, _| open(s, links::APP_PAGE.into())),
+        cmd!("help.onlineTutorials", "Online Tutorials...", ["Help"], None, "{}", always, |_, _| Ok(json!({}))),
         cmd!("help.inAppTutorials", "In-App Tutorials...", ["Help"], None, "{} → the Home screen's Learn tab", always, |s, p| super::frontend(
             s,
             "help.inAppTutorials",
             p
         )),
         cmd!("help.reportIssue", "Provide Feedback...", ["Help"], None, "{}", always, |s, _| open(s, links::ISSUES.into())),
-        cmd!(
-            "help.sibling",
-            "Other Apps",
-            [],
-            None,
-            "{app: photocraft|vectorcraft|filmcraft|lightcraft|pdfcraft|designcraft, kind?: page|github}",
-            always,
-            sibling
-        ),
     ]
 }

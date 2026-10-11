@@ -74,7 +74,7 @@ fn help_tutorials() {
     s.execute("help.onlineTutorials", json!({})).unwrap();
     s.execute("help.inAppTutorials", json!({})).unwrap();
     let ev = s.drain_events();
-    assert!(ev.iter().any(|e| matches!(e, Event::OpenUrl(u) if u == crate::links::APP_PAGE)));
+    assert!(!ev.iter().any(|e| matches!(e, Event::OpenUrl(_))));
     assert!(ev.iter().any(|e| matches!(e, Event::Frontend { command, .. } if command == "help.inAppTutorials")));
 }
 
