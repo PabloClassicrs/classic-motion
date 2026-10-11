@@ -141,6 +141,7 @@ const JAPANESE: &[(&str, &str)] = &[
     ("Channel:", "チャンネル:"),
     ("Chapter:", "チャプター:"),
     ("Choose...", "選択..."),
+    ("Classic", "クラシック"),
     ("Classic 3D", "クラシック3D"),
     ("Clear", "消去"),
     ("Clear list", "リストを消去"),
@@ -570,6 +571,7 @@ const SIMPLIFIED_CHINESE: &[(&str, &str)] = &[
     ("Channel:", "通道："),
     ("Chapter:", "章节："),
     ("Choose...", "选择..."),
+    ("Classic", "经典"),
     ("Classic 3D", "经典 3D"),
     ("Clear", "清除"),
     ("Clear list", "清空列表"),
@@ -1091,6 +1093,7 @@ const TRADITIONAL_CHINESE: &[(&str, &str)] = &[
     ("Channel:", "通道："),
     ("Chapter:", "章節："),
     ("Choose...", "選取..."),
+    ("Classic", "經典"),
     ("Classic 3D", "經典 3D"),
     ("Clear", "清除"),
     ("Clear list", "清空清單"),
@@ -1607,6 +1610,7 @@ const UKRAINIAN: &[(&str, &str)] = &[
     ("Channel:", "Канал:"),
     ("Chapter:", "Розділ:"),
     ("Choose...", "Вибрати..."),
+    ("Classic", "Класична"),
     ("Classic 3D", "Класичний 3D"),
     ("Clear", "Очистити"),
     ("Clear list", "Очистити список"),
@@ -1979,6 +1983,21 @@ const UKRAINIAN: &[(&str, &str)] = &[
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn classic_theme_label_is_translated() {
+        for (language, expected) in [
+            ("ja", "クラシック"),
+            ("zh-hans", "经典"),
+            ("zh-hant", "經典"),
+            ("uk", "Класична"),
+        ] {
+            set_current(language);
+            assert_eq!(tr("Classic"), expected);
+        }
+        set_current("en");
+        assert_eq!(tr("Classic"), "Classic");
+    }
 
     /// The interface text that has moved into this catalog. Add a panel here when you convert it;
     /// the tests below then keep it translated.
