@@ -877,9 +877,8 @@ fn export_template(s: &mut Session, p: &Value) -> Result<Value> {
 pub fn read_template(bytes: &[u8]) -> std::result::Result<(Value, Project, Vec<(String, Vec<u8>)>), String> {
     let entries = effectcraft_lottie::zip::read_stored(bytes);
     let get = |n: &str| entries.iter().find(|(k, _)| k == n).map(|(_, v)| v.clone());
-    let manifest: Value =
-        serde_json::from_slice(&get("manifest.json").ok_or_else(|| format!("not a {APP_NAME} template (no manifest.json)"))?)
-            .map_err(|e| format!("manifest.json: {e}"))?;
+    let manifest: Value = serde_json::from_slice(&get("manifest.json").ok_or_else(|| format!("not a {APP_NAME} template (no manifest.json)"))?)
+        .map_err(|e| format!("manifest.json: {e}"))?;
     if manifest.get("format").and_then(Value::as_str) != Some(TEMPLATE_FORMAT) {
         return Err(format!("not a {APP_NAME} template"));
     }

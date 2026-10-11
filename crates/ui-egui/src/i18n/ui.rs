@@ -1980,12 +1980,7 @@ mod tests {
 
     #[test]
     fn classic_theme_label_is_translated() {
-        for (language, expected) in [
-            ("ja", "クラシック"),
-            ("zh-hans", "经典"),
-            ("zh-hant", "經典"),
-            ("uk", "Класична"),
-        ] {
+        for (language, expected) in [("ja", "クラシック"), ("zh-hans", "经典"), ("zh-hant", "經典"), ("uk", "Класична")] {
             set_current(language);
             assert_eq!(tr("Classic"), expected);
         }
@@ -2172,18 +2167,10 @@ mod tests {
             let bare = format!("{en:?}");
             let dynamic_app_title = en
                 .strip_suffix(effectcraft_engine::links::APP_NAME)
-                .map(|prefix| {
-                    format!(
-                        "format!({:?}, effectcraft_engine::links::APP_NAME)",
-                        format!("{prefix}{{}}")
-                    )
-                });
+                .map(|prefix| format!("format!({:?}, effectcraft_engine::links::APP_NAME)", format!("{prefix}{{}}")));
             assert!(
                 CONVERTED.iter().any(|(_, src)| {
-                    src.contains(&plain)
-                        || src.contains(&formatted)
-                        || src.contains(&bare)
-                        || dynamic_app_title.as_ref().is_some_and(|call| src.contains(call))
+                    src.contains(&plain) || src.contains(&formatted) || src.contains(&bare) || dynamic_app_title.as_ref().is_some_and(|call| src.contains(call))
                 }),
                 "{en:?} is in the catalog but no converted panel asks for it"
             );

@@ -1139,7 +1139,11 @@ pub fn show(app: &mut EffectcraftApp, ui: &mut egui::Ui, rect: Rect) {
             widgets::open_popup(ui, apop);
         }
         if let Some(spec) = effectcraft_engine::effects::find(effect) {
-            let lines = vec![spec.name.to_string(), format!("Category: {}", spec.category), format!("{} built-in effect (MIT OR Apache-2.0)", effectcraft_engine::links::APP_NAME)];
+            let lines = vec![
+                spec.name.to_string(),
+                format!("Category: {}", spec.category),
+                format!("{} built-in effect (MIT OR Apache-2.0)", effectcraft_engine::links::APP_NAME),
+            ];
             let _ = widgets::popup_menu(ui, apop, about.left_bottom(), &lines, None);
         }
         let hresp = ui.interact(

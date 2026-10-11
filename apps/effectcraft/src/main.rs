@@ -209,7 +209,11 @@ fn main() -> eframe::Result {
                 rfd::FileDialog::new().add_filter("Media", exts).pick_files().unwrap_or_default().into_iter().map(|p| p.to_string_lossy().to_string()).collect()
             }));
             app.hooks.pick_save = Some(Box::new(|name: &str| {
-                rfd::FileDialog::new().add_filter(&format!("{APP_NAME} Project"), &["ecproj"]).set_file_name(name).save_file().map(|p| p.to_string_lossy().to_string())
+                rfd::FileDialog::new()
+                    .add_filter(&format!("{APP_NAME} Project"), &["ecproj"])
+                    .set_file_name(name)
+                    .save_file()
+                    .map(|p| p.to_string_lossy().to_string())
             }));
             // The window closes after a lost graphics device (#591); say why, unless an agent drives
             // the app through the control channel.
@@ -318,12 +322,8 @@ fn startup_failed(e: &eframe::Error, gl_next: bool) {
     );
     log::error!("{message}");
     eprintln!("effectcraft: {message}");
-    let _ = rfd::MessageDialog::new()
-        .set_level(rfd::MessageLevel::Error)
-        .set_title(APP_NAME)
-        .set_description(message)
-        .set_buttons(rfd::MessageButtons::Ok)
-        .show();
+    let _ =
+        rfd::MessageDialog::new().set_level(rfd::MessageLevel::Error).set_title(APP_NAME).set_description(message).set_buttons(rfd::MessageButtons::Ok).show();
 }
 
 /// The desktop app: the egui app plus, on macOS, the system menu bar.

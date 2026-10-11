@@ -270,9 +270,7 @@ fn about_main(app: &mut EffectcraftApp, ui: &mut egui::Ui, t: &Tokens, cmd: &mut
     ui.label(tr("A clean-room, open-source compositor for motion graphics and visual effects: native on macOS, Windows and Linux, and in the browser."));
     ui.label(tr("Baseado no EffectCraft (MIT/Apache)"));
     ui.add_space(14.0);
-    let links: [(Icon, &str, &str, &'static str); 1] = [
-        (Icon::Code, "Source code on GitHub", effectcraft_engine::links::GITHUB, "help.github"),
-    ];
+    let links: [(Icon, &str, &str, &'static str); 1] = [(Icon::Code, "Source code on GitHub", effectcraft_engine::links::GITHUB, "help.github")];
     for (icon, label, url, c) in links {
         let (r, resp) = ui.allocate_exact_size(vec2(ui.available_width(), 30.0), Sense::click());
         let p = ui.painter();
@@ -280,13 +278,7 @@ fn about_main(app: &mut EffectcraftApp, ui: &mut egui::Ui, t: &Tokens, cmd: &mut
         let foreground = t.text;
         icons::paint(p, Rect::from_center_size(pos2(r.min.x + 18.0, r.center().y), vec2(15.0, 15.0)), icon, foreground);
         p.text(pos2(r.min.x + 36.0, r.center().y), Align2::LEFT_CENTER, tr(label), Tokens::medium(12.5), foreground);
-        p.text(
-            pos2(r.max.x - 12.0, r.center().y),
-            Align2::RIGHT_CENTER,
-            url,
-            Tokens::ui(11.0),
-            t.text_dim,
-        );
+        p.text(pos2(r.max.x - 12.0, r.center().y), Align2::RIGHT_CENTER, url, Tokens::ui(11.0), t.text_dim);
         app.auto.add(&format!("about.{c}"), r, label);
         if resp.clicked() {
             *cmd = Some(c);
