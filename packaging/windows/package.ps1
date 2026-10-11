@@ -106,9 +106,42 @@ $Portable = Join-Path $TargetDir "windows-package\effectcraft-$Version-windows-$
 Remove-Item -Recurse -Force $Portable -ErrorAction SilentlyContinue
 New-Item -ItemType Directory -Force -Path $Portable | Out-Null
 Copy-Item (Join-Path $Stage '*.exe') $Portable
-foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE') {
-  $p = Join-Path $Root $f
-  if (Test-Path $p) { Copy-Item $p $Portable }
+$PortableFiles = @(
+  'README.md',
+  'NOTICE',
+  'ATTRIBUTION.md',
+  'LICENSE-MIT',
+  'LICENSE-APACHE',
+  'docs\brand\TRADEMARKS.md',
+  'assets\app-icon\LICENSE.txt',
+  'assets\fonts\OFL-Inter.txt',
+  'assets\fonts\OFL-NotoSerif.txt',
+  'assets\fonts\OFL-JetBrainsMono.txt'
+)
+foreach ($f in $PortableFiles) {
+  $source = Join-Path $Root $f
+  if (-not (Test-Path -LiteralPath $source -PathType Leaf)) {
+    throw "portable archive notice is missing: $f"
+  }
+  $destination = Join-Path $Portable $f
+  $destinationDirectory = Split-Path -Parent $destination
+  New-Item -ItemType Directory -Force -Path $destinationDirectory | Out-Null
+  Copy-Item -LiteralPath $source -Destination $destination
+}
+
+# Sidecars for fonts and app icons embedded in the executables, including the fork mark.
+foreach ($assetDir in 'assets\fonts', 'assets\app-icon') {
+  $assetPath = Join-Path $Root $assetDir
+  if (-not (Test-Path -LiteralPath $assetPath -PathType Container)) {
+    throw "portable archive asset directory is missing: $assetDir"
+  }
+  foreach ($sidecar in Get-ChildItem -LiteralPath $assetPath -Filter '*.attribution' -File -Recurse) {
+    $relativePath = [IO.Path]::GetRelativePath($Root, $sidecar.FullName)
+    $destination = Join-Path $Portable $relativePath
+    $destinationDirectory = Split-Path -Parent $destination
+    New-Item -ItemType Directory -Force -Path $destinationDirectory | Out-Null
+    Copy-Item -LiteralPath $sidecar.FullName -Destination $destination
+  }
 }
 $Zip = Join-Path $Dist "effectcraft-$Version-windows-$Arch-portable.zip"
 Remove-Item -Force $Zip -ErrorAction SilentlyContinue
