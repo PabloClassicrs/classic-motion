@@ -88,7 +88,7 @@ builds the AppImage, `.deb`, `.rpm` and tarball; the workflow then runs the AppI
 ### Linux: AppImage updates and Flatpak
 
 Each AppImage embeds update information
-(`gh-releases-zsync|storytold|effectcraft|latest|effectcraft-*-linux-<arch>.AppImage.zsync`), and
+(`gh-releases-zsync|PabloClassicrs|classic-motion|latest|effectcraft-*-linux-<arch>.AppImage.zsync`), and
 the `.zsync` file published beside it lets [AppImageUpdate](https://github.com/AppImageCommunity/AppImageUpdate)
 and AppImageLauncher fetch only the changed blocks from the newest published (non-pre-release)
 version. `package.sh` writes the `.zsync` when `zsyncmake` (the `zsync` package) is installed; the

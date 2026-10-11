@@ -1,4 +1,4 @@
-//! Help menu: community and project links (the frontend opens `Event::OpenUrl`).
+//! Help menu commands. External project links are disabled until publication.
 
 use serde_json::{Value, json};
 

@@ -157,10 +157,9 @@ See [docs/agents.md](docs/agents.md) and [docs/control-protocol.md](docs/control
 
 ## Get started
 
-Installers for each version are on the [Releases](https://github.com/storytold/effectcraft/releases)
-page: a universal macOS app; Windows MSIs and portable zips for x64, x86 and ARM64; Linux
-AppImage, Flatpak, deb, rpm and tar.gz for x86_64 and aarch64; a FreeBSD x86_64 tarball; and the
-web build. [Downloads](#downloads) lists every file. The Windows ARM64 build runs natively on
+Each release includes a universal macOS app; Windows MSIs and portable zips for x64, x86 and ARM64;
+Linux AppImage, Flatpak, deb, rpm and tar.gz for x86_64 and aarch64; a FreeBSD x86_64 tarball; and
+the web build. [Downloads](#downloads) lists every file. The Windows ARM64 build runs natively on
 Windows on ARM, without x64 emulation. CI installs that MSI on Windows 11 ARM64 hardware, checks
 both programs are ARM64 and runs the command-line tool there, but it doesn't open the app's window
 or run the test suite natively on ARM64 yet, so please report anything that behaves differently.
@@ -175,11 +174,11 @@ echo 'media-video/effectcraft-bin ~amd64' >> /etc/portage/package.accept_keyword
 emerge --ask media-video/effectcraft-bin
 ```
 
-To build it yourself you need [Rust](https://rustup.rs/) 1.95 or newer.
+To build it yourself, clone this repository into a directory named `classic-motion` and install
+[Rust](https://rustup.rs/) 1.95 or newer.
 
 ```sh
-git clone https://github.com/storytold/effectcraft
-cd effectcraft
+cd classic-motion
 cargo run --release -p effectcraft          # the app (add `-- --demo` to open the demo project)
 cargo run --release -p effectcraft-cli -- render --out intro.mp4    # render the demo headless
 cargo xtask web --serve 8765                # the browser build on http://127.0.0.1:8765/ (docs/web.md)
@@ -213,8 +212,7 @@ EffectCraft is in **alpha**: about 91% of After Effects' features exist, and we 
 about 45% of the way to replacing After Effects for professional work. The [ROADMAP](ROADMAP.md)
 has the plan, [docs/target-app-parity.md](docs/target-app-parity.md) the measurement and
 [docs/gaps.md](docs/gaps.md) every known shortfall. The web build ([docs/web.md](docs/web.md)) runs the full app in the browser.
-[Bug reports](https://github.com/storytold/effectcraft/issues) are the most useful thing you can
-send us right now.
+When reporting a problem, include steps to reproduce it and any relevant logs.
 
 ## How it's made
 
@@ -229,7 +227,7 @@ send us right now.
 
 ## Downloads
 
-**Want a specific build or format?** On GitHub, the [latest release](https://github.com/storytold/effectcraft/releases/latest) has every build listed below, and [all releases](https://github.com/storytold/effectcraft/releases) has earlier versions and their notes. `<ver>` in the file names is the version number, and `SHA256SUMS.txt` lists a checksum for every file.
+**Want a specific build or format?** Each release includes the build files listed below; earlier versions include their release notes. `<ver>` in the file names is the version number, and `SHA256SUMS.txt` lists a checksum for every file.
 
 ### Windows
 
@@ -289,13 +287,9 @@ File ▸ Import fallback instead.
 ## License and credits
 
 EffectCraft is dual-licensed under [MIT](LICENSE-MIT) or [Apache-2.0](LICENSE-APACHE), at your option.
-Copyright (c) 2026 ArtCraft Team and the EffectCraft contributors. Required notices are in [NOTICE](NOTICE).
+Copyright and required notices are in [NOTICE](NOTICE).
 
 Bundled fonts, icons, images and other assets keep their applicable licenses; each one is listed
 with its author, source and license in [ATTRIBUTION.md](ATTRIBUTION.md).
 
 <sub>Adobe, Photoshop, Illustrator, Premiere Pro, Lightroom, Acrobat, After Effects and InDesign are trademarks or registered trademarks of Adobe Inc. in the United States and/or other countries. EffectCraft is an independent, open-source project and is not affiliated with, sponsored by or endorsed by Adobe Inc.; these names are used only to describe the workflows it is compatible with.</sub>
-
-## Star history
-
-[![Star History Chart](https://api.star-history.com/svg?repos=storytold/effectcraft&type=Date&legend=top-left)](https://www.star-history.com/?repos=storytold%2Feffectcraft&type=date&legend=top-left)

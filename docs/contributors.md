@@ -1,9 +1,8 @@
 # Contributors in the About window
 
 **About ▸ Contributors** credits everyone who contributed to EffectCraft, and **About ▸ Models** credits
-the AI models named in `Co-Authored-By` trailers. This follows the shared craftrules standard
-[`standards/contributors.md`](https://github.com/storytold/craftrules/blob/main/standards/contributors.md);
-this page is the local copy of the decision.
+the AI models named in `Co-Authored-By` trailers. This page records the project's local
+contributor-credit decisions.
 
 ## Decision
 
