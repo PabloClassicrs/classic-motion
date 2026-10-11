@@ -193,7 +193,7 @@ Things that tripped up a long agent-driven session (a multi-scene 3D piece built
   default to layer time; pass `timeBase: "comp"` to supply comp seconds on offset or
   stretched layers. `run_script`'s `setValueAtTime` and `keyTime` also use comp time. Without an
   explicit engine time base, subtract the layer's start time before keying an unstretched layer
-  ([#257](https://github.com/storytold/effectcraft/issues/257)).
+  (upstream issue #257).
 - **Moving a layer in time.** `execute_command layer.timing {"layers":["Scene 2"],"start":5.1}` sets
   the start time in comp seconds and moves the in and out points with it.
 - **Loops in scripts.** `run_script` can call any engine command with `app.run(id, params)`, for
@@ -206,7 +206,7 @@ Things that tripped up a long agent-driven session (a multi-scene 3D piece built
 - **Environment light.** `layer.newLight` also accepts `"kind":"Environment"`: an equirectangular
   image that metallic surfaces reflect. Set its `lightOptions/source` to a footage, comp or solid
   layer by layer id; with no source it uses the comp's Environment Layer (`layer.environment`)
-  ([#261](https://github.com/storytold/effectcraft/issues/261)).
+  (upstream issue #261).
 
 ### Cookbook (from end-to-end QA)
 
