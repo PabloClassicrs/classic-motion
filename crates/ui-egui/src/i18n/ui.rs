@@ -163,7 +163,6 @@ const JAPANESE: &[(&str, &str)] = &[
     ("Colour map", "カラーマップ"),
     ("Columns", "列"),
     ("Comment:", "コメント:"),
-    ("Community", "コミュニティ"),
     ("Composition", "コンポジション"),
     ("Composition Mini-Flowchart", "コンポジションミニフローチャート"),
     ("Composition Name:", "コンポジション名:"),
@@ -593,7 +592,6 @@ const SIMPLIFIED_CHINESE: &[(&str, &str)] = &[
     ("Colour map", "颜色图"),
     ("Columns", "列"),
     ("Comment:", "注释："),
-    ("Community", "社区"),
     ("Composition", "合成"),
     ("Composition Mini-Flowchart", "合成微型流程图"),
     ("Composition Name:", "合成名称："),
@@ -1001,7 +999,6 @@ const SIMPLIFIED_CHINESE: &[(&str, &str)] = &[
     ("New Project", "新建项目"),
     ("Open Project…", "打开项目…"),
     ("Templates", "模板"),
-    ("EffectCraft home page", "EffectCraft 主页"),
     ("Classic Motion on GitHub", "GitHub 上的 Classic Motion"),
     ("Motion graphics and visual effects · version {}", "动态图形和视觉效果 · 版本 {}"),
     ("New Composition", "新建合成"),
@@ -1115,7 +1112,6 @@ const TRADITIONAL_CHINESE: &[(&str, &str)] = &[
     ("Colour map", "顏色圖"),
     ("Columns", "列"),
     ("Comment:", "註解："),
-    ("Community", "社區"),
     ("Composition", "合成"),
     ("Composition Mini-Flowchart", "合成微型流程圖"),
     ("Composition Name:", "合成名稱："),
@@ -1518,7 +1514,6 @@ const TRADITIONAL_CHINESE: &[(&str, &str)] = &[
     ("New Project", "新增專案"),
     ("Open Project…", "開啟專案…"),
     ("Templates", "範本"),
-    ("EffectCraft home page", "EffectCraft 首頁"),
     ("Classic Motion on GitHub", "GitHub 上的 Classic Motion"),
     ("Motion graphics and visual effects · version {}", "動態圖形與視覺效果 · 版本 {}"),
     ("New Composition", "新增合成"),
@@ -1632,7 +1627,6 @@ const UKRAINIAN: &[(&str, &str)] = &[
     ("Colour map", "Карта кольорів"),
     ("Columns", "Стовпці"),
     ("Comment:", "Коментар:"),
-    ("Community", "Спільнота"),
     ("Composition", "Композиція"),
     ("Composition Mini-Flowchart", "Мініблок-схема композиції"),
     ("Composition Name:", "Назва композиції:"),
@@ -2176,8 +2170,21 @@ mod tests {
             let plain = format!("tr({en:?})");
             let formatted = format!("tr_args({en:?}");
             let bare = format!("{en:?}");
+            let dynamic_app_title = en
+                .strip_suffix(effectcraft_engine::links::APP_NAME)
+                .map(|prefix| {
+                    format!(
+                        "format!({:?}, effectcraft_engine::links::APP_NAME)",
+                        format!("{prefix}{{}}")
+                    )
+                });
             assert!(
-                CONVERTED.iter().any(|(_, src)| src.contains(&plain) || src.contains(&formatted) || src.contains(&bare)),
+                CONVERTED.iter().any(|(_, src)| {
+                    src.contains(&plain)
+                        || src.contains(&formatted)
+                        || src.contains(&bare)
+                        || dynamic_app_title.as_ref().is_some_and(|call| src.contains(call))
+                }),
                 "{en:?} is in the catalog but no converted panel asks for it"
             );
         }
