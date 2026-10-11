@@ -1218,11 +1218,11 @@ Help
   Enable Logging | help.enableLogging
   Reveal Logging File | help.revealLogFile
   ---
-  Join the ArtCraft Discord... | help.discord
+  Join the Community Discord... | help.discord
   Provide Feedback... | help.reportIssue
   ---
-  ArtCraft Website | help.website
-  EffectCraft Home Page | help.appPage
+  Website | help.website
+  Classic Motion Home Page | help.appPage
   Classic Motion on GitHub | help.github
   Open Demo Project | file.openDemoProject
   [!mac] ---
