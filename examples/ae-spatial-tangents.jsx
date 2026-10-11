@@ -4,7 +4,7 @@
 // original comps with one solid each; run it in a scratch project. EffectCraft prints one JSON line
 // per key; After Effects writes them to ae-spatial-tangents.jsonl next to this script.
 // No Adobe assets, presets, application internals or implementation code are read.
-var EC = String(app.version).indexOf("EffectCraft") >= 0;
+var EC = String(app.version).indexOf("Classic Motion") >= 0;
 var OUT = null;
 if (!EC) {
     OUT = new File(File($.fileName).parent.fsName + "/ae-spatial-tangents.jsonl");
