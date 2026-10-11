@@ -317,7 +317,7 @@ function __uiImageJson(v) {
 
 var ScriptUI = {
   version: "6.2.2",
-  frameworkName: "EffectCraft",
+  frameworkName: "Classic Motion",
   environment: { keyboardState: { shiftKey: false, ctrlKey: false, altKey: false, metaKey: false, keyName: "" } },
   FontStyle: { REGULAR: 0, BOLD: 1, ITALIC: 2, BOLDITALIC: 3 },
   BrushType: { SOLID_COLOR: 0, THEME_COLOR: 1 },

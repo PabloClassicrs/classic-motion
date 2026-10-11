@@ -108,8 +108,8 @@ var $ = {
   level: 0,
   engineName: "boa",
   get fileName() { return __get("app").scriptName; },
-  get os() { return "EffectCraft"; },
-  get version() { return "EffectCraft scripting"; },
+  get os() { return "Classic Motion"; },
+  get version() { return "Classic Motion scripting"; },
   get locale() { return "en_US"; },
   evalFile: function () { throw __err("$.evalFile is not supported: scripts can't run scripts"); },
 };
@@ -212,7 +212,7 @@ File.openDialog = function () { return null; };
 File.saveDialog = function () { return null; };
 File.decode = function (s) { return decodeURIComponent(s); };
 File.encode = function (s) { return encodeURIComponent(s); };
-File.fs = "EffectCraft";
+File.fs = "Classic Motion";
 
 function Folder(path) {
   if (!(this instanceof Folder)) return new Folder(path);
