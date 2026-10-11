@@ -309,7 +309,7 @@ fn theme_card(
     acts: &mut Vec<Act>,
 ) {
     egui::Frame::new()
-        .fill(t.field_bg)
+        .fill(if t.kind == ThemeKind::Classic { t.panel_bg } else { t.field_bg })
         .stroke(egui::Stroke::new(1.0, if active { t.accent } else { t.field_border }))
         .corner_radius(6.0)
         .inner_margin(egui::Margin::same(8))
@@ -325,8 +325,10 @@ fn theme_card(
             let kind = ThemeKind::from_name(cur).unwrap_or(if key.ends_with("lightTheme") { ThemeKind::Light } else { ThemeKind::Dark });
             theme_preview(ui, kind, ui.available_width());
             ui.add_space(4.0);
+            let classic_label = tr("Classic");
             for (label, value) in options {
-                let r = ui.radio(cur == *value, tr(label));
+                let shown_label = if *value == "classic" { classic_label } else { tr(label) };
+                let r = ui.radio(cur == *value, shown_label);
                 reg(app, &format!("settings.{key}.{value}"), &r, label);
                 if r.clicked() && cur != *value {
                     acts.push(Act::Set(key.into(), json!(value)));

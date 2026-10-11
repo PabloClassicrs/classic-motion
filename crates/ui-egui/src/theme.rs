@@ -15,6 +15,7 @@ pub enum ThemeKind {
     Dark,
     Darker,
     Light,
+    Classic,
 }
 
 impl ThemeKind {
@@ -23,6 +24,7 @@ impl ThemeKind {
             "dark" | "default" => Some(ThemeKind::Dark),
             "darker" | "darkest" => Some(ThemeKind::Darker),
             "light" => Some(ThemeKind::Light),
+            "classic" => Some(ThemeKind::Classic),
             _ => None,
         }
     }
@@ -33,6 +35,7 @@ impl ThemeKind {
             ThemeKind::Dark => "dark",
             ThemeKind::Darker => "darker",
             ThemeKind::Light => "light",
+            ThemeKind::Classic => "classic",
         }
     }
 
@@ -196,6 +199,60 @@ impl Tokens {
                 field_bg: Color32::from_rgb(0x0e, 0x0e, 0x0e),
                 pasteboard: Color32::from_rgb(0x11, 0x11, 0x11),
                 ..dark
+            },
+            ThemeKind::Classic => Tokens {
+                kind,
+                app_bg: Color32::from_rgb(0x07, 0x09, 0x07),
+                header_bg: Color32::from_rgb(0x11, 0x16, 0x11),
+                panel_bg: Color32::from_rgb(0x17, 0x1d, 0x17),
+                tab_text: Color32::from_rgb(0xb8, 0xc2, 0xb5),
+                tab_text_active: Color32::from_rgb(0xf2, 0xf5, 0xf1),
+                focus: Color32::from_rgb(0x71, 0xf0, 0x5f),
+                accent: Color32::from_rgb(0x71, 0xf0, 0x5f),
+                accent_hover: Color32::from_rgb(0x84, 0xf5, 0x74),
+                text: Color32::from_rgb(0xf2, 0xf5, 0xf1),
+                text_dim: Color32::from_rgb(0xb8, 0xc2, 0xb5),
+                text_faint: Color32::from_rgb(0x9e, 0xaa, 0x9b),
+                icon: Color32::from_rgb(0xb8, 0xc2, 0xb5),
+                icon_active: Color32::from_rgb(0xf2, 0xf5, 0xf1),
+                hover: Color32::from_rgb(0x20, 0x2a, 0x20),
+                pressed: Color32::from_rgb(0x26, 0x3d, 0x22),
+                field_bg: Color32::from_rgb(0x0d, 0x11, 0x0d),
+                field_border: Color32::from_rgb(0x65, 0x76, 0x61),
+                separator: Color32::from_rgb(0x30, 0x39, 0x30),
+                row: Color32::from_rgb(0x17, 0x1d, 0x17),
+                row_alt: Color32::from_rgb(0x1b, 0x23, 0x1a),
+                row_selected: Color32::from_rgb(0x26, 0x3d, 0x22),
+                hot_text: Color32::from_rgb(0x09, 0x0b, 0x09),
+                tl_bg: Color32::from_rgb(0x0d, 0x11, 0x0d),
+                tl_ruler_bg: Color32::from_rgb(0x17, 0x1d, 0x17),
+                tl_ruler_tick: Color32::from_rgb(0x65, 0x76, 0x61),
+                tl_ruler_text: Color32::from_rgb(0xb8, 0xc2, 0xb5),
+                cti: Color32::from_rgb(0x71, 0xf0, 0x5f),
+                work_area: Color32::from_rgb(0x70, 0x81, 0x6d),
+                cache_green: Color32::from_rgb(0x71, 0xf0, 0x5f),
+                cache_blue: Color32::from_rgb(0x75, 0xa9, 0xff),
+                keyframe: Color32::from_rgb(0xb8, 0xc2, 0xb5),
+                keyframe_selected: Color32::from_rgb(0x71, 0xf0, 0x5f),
+                pasteboard: Color32::from_rgb(0x07, 0x09, 0x07),
+                timecode: Color32::from_rgb(0x71, 0xf0, 0x5f),
+                danger: Color32::from_rgb(0xff, 0x6b, 0x63),
+                warning: Color32::from_rgb(0xff, 0xc2, 0x66),
+                fx_header: Color32::from_rgb(0x11, 0x16, 0x11),
+                fx_header_active: Color32::from_rgb(0x26, 0x3d, 0x22),
+                tl_graph_selected: Color32::from_rgb(0x26, 0x3d, 0x22),
+                switch_well: Color32::from_rgb(0x0d, 0x11, 0x0d),
+                tl_nav_bar: Color32::from_rgb(0x65, 0x76, 0x61),
+                tl_work_area_bar: Color32::from_rgb(0x70, 0x81, 0x6d),
+                expr_bg: Color32::from_rgb(0x0d, 0x11, 0x0d),
+                expr_text: Color32::from_rgb(0xff, 0xb0, 0x8f),
+                labels: default_labels(),
+                radius: 6.0,
+                radius_sm: 3.0,
+                gap: 4.0,
+                tab_h: 30.0,
+                row_h: 19.0,
+                gradients: false,
             },
             ThemeKind::Light => Tokens {
                 app_bg: Color32::from_rgb(0xb4, 0xb4, 0xb4),
@@ -461,8 +518,13 @@ pub fn apply_visuals(ctx: &egui::Context, t: &Tokens) {
     v.extreme_bg_color = t.field_bg;
     v.faint_bg_color = t.row_alt;
     v.override_text_color = Some(t.text);
-    v.selection.bg_fill = t.accent;
-    v.selection.stroke = Stroke::new(1.0, Color32::WHITE);
+    if t.kind == ThemeKind::Classic {
+        v.selection.bg_fill = t.row_selected;
+        v.selection.stroke = Stroke::new(1.0, t.accent);
+    } else {
+        v.selection.bg_fill = t.accent;
+        v.selection.stroke = Stroke::new(1.0, Color32::WHITE);
+    }
     v.hyperlink_color = t.accent;
     v.window_stroke = Stroke::new(1.0, t.field_border);
     v.window_corner_radius = egui::CornerRadius::same(8);
@@ -609,6 +671,29 @@ mod script_font_tests {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn classic_theme_keeps_its_stable_name_and_accessible_palette() {
+        assert_eq!(ThemeKind::from_name("classic"), Some(ThemeKind::Classic));
+        assert_eq!(ThemeKind::Classic.name(), "classic");
+        assert!(!ThemeKind::Classic.is_light());
+
+        let t = Tokens::for_kind(ThemeKind::Classic);
+        assert_eq!(t.app_bg, Color32::from_rgb(0x07, 0x09, 0x07));
+        assert_eq!(t.accent, Color32::from_rgb(0x71, 0xf0, 0x5f));
+        assert_eq!(t.panel_bg, Color32::from_rgb(0x17, 0x1d, 0x17));
+        assert_eq!(t.field_border, Color32::from_rgb(0x65, 0x76, 0x61));
+        assert!(!t.gradients);
+        assert_eq!(Tokens::for_kind(ThemeKind::Dark).accent, Color32::from_rgb(0x2d, 0x8c, 0xeb));
+        assert!(ThemeKind::Light.is_light());
+
+        let ctx = egui::Context::default();
+        apply_visuals(&ctx, &t);
+        let visuals = ctx.style().visuals.clone();
+        assert_eq!(visuals.selection.bg_fill, t.row_selected);
+        assert_eq!(visuals.selection.stroke.color, t.accent);
+        assert_eq!(theme_preference("dark", ThemeKind::Classic.is_light()), egui::ThemePreference::Dark);
+    }
 
     /// The last `n` font names of `family`, in order.
     fn tail(family: &[String], n: usize) -> Vec<&str> {
