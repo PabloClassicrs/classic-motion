@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Build and package EffectCraft for Linux (<arch> is x86_64 or aarch64):
+# Build and package Classic Motion for Linux (<arch> is x86_64 or aarch64):
 #
 #   $DIST/effectcraft-<version>-linux-<arch>.AppImage  any distro with glibc >= the build host's
 #   $DIST/effectcraft-<version>-linux-<arch>.AppImage.zsync  delta updates (needs zsyncmake)
@@ -39,7 +39,7 @@ esac
 export EFFECTCRAFT_MAINTAINER="${EFFECTCRAFT_MAINTAINER:-EffectCraft maintainers <effectcraft@storyteller.ai>}"
 BASENAME="effectcraft-$VERSION-linux-$ARCH"
 
-echo "==> EffectCraft $VERSION for Linux $ARCH ($FORMATS)"
+echo "==> Classic Motion $VERSION for Linux $ARCH ($FORMATS)"
 
 if [ "$SKIP_BUILD" = 0 ]; then
   (cd "$ROOT" && cargo build --release --locked -p effectcraft -p effectcraft-cli)
@@ -94,7 +94,7 @@ fi
 
 # ---- AppImage -----------------------------------------------------------------------------------
 if has appimage; then
-  APPDIR="$WORK/EffectCraft.AppDir"
+  APPDIR="$WORK/ClassicMotion.AppDir"
   cp -R "$STAGE" "$APPDIR"
   mv "$APPDIR/usr/share/doc" "$WORK/doc-unused"
   ln -s usr/bin/effectcraft "$APPDIR/AppRun"
