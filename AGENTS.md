@@ -82,6 +82,7 @@ reproduce an image (for example, point lists traced from someone else's icon).
    need a sidecar and an `ATTRIBUTION.md` row (licence `LicenseRef-ArtCraft-Trademark`). No other
    non-open asset is allowed, and this exception never covers third-party marks (Adobe, Discord, GitHub
    and other logos stay out; draw a generic icon instead).
+   Owner-approved fork exception: the Classic's Automação mark is documented in [docs/brand/TRADEMARKS.md](docs/brand/TRADEMARKS.md) (AGENTS.md §1.2 and §1.8).
 
 ## 2. Clean-room code
 
