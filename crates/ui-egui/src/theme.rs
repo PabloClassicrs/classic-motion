@@ -689,7 +689,7 @@ mod tests {
 
         let ctx = egui::Context::default();
         apply_visuals(&ctx, &t);
-        let visuals = ctx.style().visuals.clone();
+        let visuals = ctx.global_style().visuals.clone();
         assert_eq!(visuals.selection.bg_fill, t.row_selected);
         assert_eq!(visuals.selection.stroke.color, t.accent);
         assert_eq!(theme_preference("dark", ThemeKind::Classic.is_light()), egui::ThemePreference::Dark);
