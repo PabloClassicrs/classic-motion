@@ -2176,8 +2176,21 @@ mod tests {
             let plain = format!("tr({en:?})");
             let formatted = format!("tr_args({en:?}");
             let bare = format!("{en:?}");
+            let dynamic_app_title = en
+                .strip_suffix(effectcraft_engine::links::APP_NAME)
+                .map(|prefix| {
+                    format!(
+                        "format!({:?}, effectcraft_engine::links::APP_NAME)",
+                        format!("{prefix}{{}}")
+                    )
+                });
             assert!(
-                CONVERTED.iter().any(|(_, src)| src.contains(&plain) || src.contains(&formatted) || src.contains(&bare)),
+                CONVERTED.iter().any(|(_, src)| {
+                    src.contains(&plain)
+                        || src.contains(&formatted)
+                        || src.contains(&bare)
+                        || dynamic_app_title.as_ref().is_some_and(|call| src.contains(call))
+                }),
                 "{en:?} is in the catalog but no converted panel asks for it"
             );
         }
