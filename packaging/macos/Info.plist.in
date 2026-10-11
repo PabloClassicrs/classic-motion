@@ -7,9 +7,9 @@
   <key>CFBundleDevelopmentRegion</key>
   <string>en</string>
   <key>CFBundleDisplayName</key>
-  <string>EffectCraft</string>
+  <string>Classic Motion</string>
   <key>CFBundleName</key>
-  <string>EffectCraft</string>
+  <string>Classic Motion</string>
   <key>CFBundleExecutable</key>
   <string>EffectCraft</string>
   <key>CFBundleIdentifier</key>
@@ -50,7 +50,7 @@
   <array>
     <dict>
       <key>CFBundleTypeName</key>
-      <string>EffectCraft Project</string>
+      <string>Classic Motion Project</string>
       <key>CFBundleTypeRole</key>
       <string>Editor</string>
       <key>LSHandlerRank</key>
@@ -68,7 +68,7 @@
       <key>UTTypeIdentifier</key>
       <string>ai.storyteller.effectcraft.document</string>
       <key>UTTypeDescription</key>
-      <string>EffectCraft Project</string>
+      <string>Classic Motion Project</string>
       <key>UTTypeConformsTo</key>
       <array>
         <string>public.data</string>
