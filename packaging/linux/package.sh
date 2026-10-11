@@ -36,7 +36,7 @@ case "$ARCH" in
   aarch64 | arm64) ARCH=aarch64; DEB_ARCH=arm64 ;;
   *) echo "unsupported architecture $ARCH" >&2; exit 2 ;;
 esac
-export EFFECTCRAFT_MAINTAINER="${EFFECTCRAFT_MAINTAINER:-EffectCraft maintainers <effectcraft@storyteller.ai>}"
+export EFFECTCRAFT_MAINTAINER="${EFFECTCRAFT_MAINTAINER:-Pablo Classic <255757930+PabloClassicrs@users.noreply.github.com>}"
 BASENAME="effectcraft-$VERSION-linux-$ARCH"
 
 echo "==> Classic Motion $VERSION for Linux $ARCH ($FORMATS)"
