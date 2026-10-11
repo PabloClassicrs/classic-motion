@@ -45,13 +45,13 @@ pub const WINDOW_GRAPHICS: &[(&str, &str)] = &[("Automatic", "auto"), ("OpenGL (
 pub const APPEARANCE_MODES: &[(&str, &str)] = &[("Sync with System", "auto"), ("Dark", "dark"), ("Light", "light")];
 
 /// The dark family of themes: (label, `appearance.darkTheme` value).
-pub const DARK_THEMES: &[(&str, &str)] = &[("Dark", "dark"), ("Darker", "darker")];
+pub const DARK_THEMES: &[(&str, &str)] = &[("Dark", "dark"), ("Darker", "darker"), ("Classic", "classic")];
 
 /// The light family of themes: (label, `appearance.lightTheme` value).
 pub const LIGHT_THEMES: &[(&str, &str)] = &[("Light", "light")];
 
 /// Every theme (the legacy single-theme `appearance.theme`).
-pub const THEMES: &[(&str, &str)] = &[("Dark", "dark"), ("Darker", "darker"), ("Light", "light")];
+pub const THEMES: &[(&str, &str)] = &[("Dark", "dark"), ("Darker", "darker"), ("Light", "light"), ("Classic", "classic")];
 
 /// The settings whose value must be one of their choices.
 fn choices(key: &str) -> Option<&'static [(&'static str, &'static str)]> {
@@ -1420,4 +1420,35 @@ pub fn pages_json() -> Value {
         })
         .collect();
     json!(pages)
+}
+
+#[cfg(test)]
+mod classic_theme_prefs_tests {
+    use super::*;
+
+    #[test]
+    fn classic_theme_normalizes_as_a_dark_theme() {
+        assert!(is_choice(DARK_THEMES, "classic"));
+        assert!(is_choice(THEMES, "classic"));
+        assert_eq!(theme_family("classic"), Some(("dark", "darkTheme")));
+
+        let prefs = Prefs::from_json(r#"{"version": 2, "appearance": {"theme": "classic"}}"#);
+        assert_eq!(prefs.appearance.appearance_mode, "dark");
+        assert_eq!(prefs.appearance.dark_theme, "classic");
+        assert_eq!(prefs.appearance.theme, "classic");
+        assert_eq!(prefs.appearance.resolved_theme(None), "classic");
+    }
+
+    #[test]
+    fn classic_theme_persists_through_preferences_json() {
+        let mut prefs = Prefs::default();
+        let result = prefs.set("appearance.theme", serde_json::json!("classic"));
+        assert!(result.is_ok());
+        assert_eq!(prefs.appearance.appearance_mode, "dark");
+        assert_eq!(prefs.appearance.dark_theme, "classic");
+
+        let restored = Prefs::from_json(&prefs.to_json());
+        assert_eq!(restored.appearance.theme, "classic");
+        assert_eq!(restored.appearance.resolved_theme(Some(true)), "classic");
+    }
 }
