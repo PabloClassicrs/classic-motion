@@ -1,0 +1,8 @@
+asset:        assets/app-icon/classic/effectcraft.ico
+title:        Classic's Automação app icon, ICO multi-resolução
+author:       Classic's Automação (titular da marca)
+source:       original work
+license:      Marca de Classic's Automação, todos os direitos reservados, uso autorizado neste fork, não licenciada sob MIT/Apache
+license-file: docs/brand/TRADEMARKS.md
+added:        2026-10-11 by Matiz
+notes:        Derivado somente de assets/app-icon/logo-icon-transparent.png; pixels visíveis #71F05F, canal alfa preservado, sem recorte/deformação; Tamanhos: 16, 20, 24, 32, 40, 48, 64, 128 e 256 px. Marca de Classic's Automação, todos os direitos reservados, uso autorizado neste fork, não licenciada sob MIT/Apache.
