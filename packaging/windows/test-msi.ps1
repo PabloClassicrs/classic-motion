@@ -83,7 +83,7 @@ foreach ($v in '0.0.1', '0.0.2', '0.0.3') {
   $src = if ($v -eq '0.0.1') { $LegacyWxs } else { $Wxs }
   Invoke-Native "wix build $v" {
     wix build $src (Join-Path $PSScriptRoot 'installer-ui.wxs') -arch x64 `
-      -d "Version=$v" -d "BinDir=$Bin" -d "IconPath=$(Join-Path $Root 'assets\app-icon\effectcraft.ico')" -o $Msi[$v]
+      -d "Version=$v" -d "BinDir=$Bin" -d "IconPath=$(Join-Path $Root 'assets\app-icon\classic\effectcraft.ico')" -o $Msi[$v]
   }
   Invoke-Native "wix msi validate $v" { wix msi validate $Msi[$v] }
 }
