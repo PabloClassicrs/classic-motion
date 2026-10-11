@@ -2,25 +2,12 @@
 
 use serde_json::{Value, json};
 
-use super::{CommandSpec, always, str_p};
-use crate::links;
-use crate::{Event, Result, Session, cmd};
-
-fn open(s: &mut Session, url: String) -> Result<Value> {
-    s.events.push(Event::OpenUrl(url.clone()));
-    Ok(json!({"url": url}))
-}
+use super::{CommandSpec, always};
+use crate::{Result, Session, cmd};
 
 /// Help ▸ Classic Motion Help / Scripting Help / Expression Reference / Effect Reference.
-fn docs(s: &mut Session, p: &Value) -> Result<Value> {
-    let page = match str_p(p, "page").unwrap_or("help") {
-        "scripting" => "docs/control-protocol.md",
-        "expressions" => "docs/expressions.md",
-        "effects" => "docs/effects.md",
-        "agents" => "docs/agents.md",
-        _ => "README.md",
-    };
-    open(s, format!("{}/blob/main/{page}", links::GITHUB))
+fn docs(_: &mut Session, _: &Value) -> Result<Value> {
+    Ok(json!({}))
 }
 
 pub fn specs() -> Vec<CommandSpec> {
@@ -29,13 +16,13 @@ pub fn specs() -> Vec<CommandSpec> {
         cmd!("help.discord", "Join the Community Discord...", ["Help"], None, "{}", always, |_, _| Ok(json!({}))),
         cmd!("help.website", "Website", ["Help"], None, "{}", always, |_, _| Ok(json!({}))),
         cmd!("help.appPage", "Classic Motion Home Page", ["Help"], None, "{}", always, |_, _| Ok(json!({}))),
-        cmd!("help.github", "Classic Motion on GitHub", ["Help"], None, "{}", always, |s, _| open(s, links::GITHUB.into())),
+        cmd!("help.github", "Classic Motion on GitHub", ["Help"], None, "{}", always, |_, _| Ok(json!({}))),
         cmd!("help.onlineTutorials", "Online Tutorials...", ["Help"], None, "{}", always, |_, _| Ok(json!({}))),
         cmd!("help.inAppTutorials", "In-App Tutorials...", ["Help"], None, "{} → the Home screen's Learn tab", always, |s, p| super::frontend(
             s,
             "help.inAppTutorials",
             p
         )),
-        cmd!("help.reportIssue", "Provide Feedback...", ["Help"], None, "{}", always, |s, _| open(s, links::ISSUES.into())),
+        cmd!("help.reportIssue", "Provide Feedback...", ["Help"], None, "{}", always, |_, _| Ok(json!({}))),
     ]
 }

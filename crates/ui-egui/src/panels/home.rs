@@ -270,28 +270,6 @@ fn rail_ui(app: &mut EffectcraftApp, ui: &mut egui::Ui, p: &egui::Painter, rail:
         }
         y += 38.0;
     }
-    // Project link at the foot (below the pages when the window is short).
-    let links = [(Icon::Code, "Classic Motion on GitHub", "help.github")];
-    let foot_h = 22.0 + links.len() as f32 * 30.0;
-    let mut cy = (rail.max.y - 16.0 - foot_h).max(y + 16.0);
-    p.line_segment([pos2(x0, cy - 10.0), pos2(x0 + w, cy - 10.0)], Stroke::new(1.0, t.separator));
-    p.text(pos2(x0, cy + 6.0), Align2::LEFT_CENTER, tr("Project"), Tokens::semibold(12.0), t.text_dim);
-    cy += 22.0;
-    for (icon, label, cmd) in links {
-        let r = Rect::from_min_size(pos2(x0, cy), vec2(w, 26.0));
-        let resp = ui.interact(r, egui::Id::new(("home-link", cmd)), Sense::click());
-        if resp.hovered() {
-            p.rect_filled(r, 13.0, t.hover);
-        }
-        let col = t.text;
-        icons::paint(p, Rect::from_center_size(pos2(r.min.x + 16.0, r.center().y), vec2(13.0, 13.0)), icon, col);
-        p.text(pos2(r.min.x + 30.0, r.center().y), Align2::LEFT_CENTER, tr(label), Tokens::medium(12.0), col);
-        app.auto.add(&format!("home.{cmd}"), r, label);
-        if resp.clicked() {
-            let _ = app.session.execute(cmd, json!({}));
-        }
-        cy += 30.0;
-    }
 }
 
 /// The Home page: the welcome, quick-start tiles and the recent projects table.
@@ -546,7 +524,6 @@ mod tests {
             "home.file.open",
             "home.app.newComp",
             "home.file.openDemoProject",
-            "home.help.github",
             "home.recent.0",
             "home.filter",
             "home.file.import",

@@ -326,12 +326,14 @@ fn save_and_open_roundtrip() {
 }
 
 #[test]
-fn help_links_emit_urls() {
+fn unpublished_project_links_do_not_open_upstream_urls() {
     let mut s = Session::default();
     let r = s.execute("help.discord", json!({})).unwrap();
     assert_eq!(r, json!({}));
+    assert_eq!(s.execute("help.github", json!({})).unwrap(), json!({}));
+    assert_eq!(s.execute("help.docs", json!({"page": "help"})).unwrap(), json!({}));
+    assert_eq!(s.execute("help.reportIssue", json!({})).unwrap(), json!({}));
     assert!(s.drain_events().is_empty());
-    assert_eq!(s.execute("help.github", json!({})).unwrap()["url"], "https://github.com/storytold/effectcraft");
 }
 
 #[test]

@@ -180,13 +180,6 @@ pub fn show(app: &mut EffectcraftApp, ui: &mut egui::Ui, rect: Rect) {
 
     // Right side: project access and workspaces.
     let mut rx = rect.max.x - 10.0;
-    let (id, icon, tip, cmd) = ("hdr-github", Icon::Code, "Classic Motion on GitHub", "help.github");
-    let r = Rect::from_min_max(pos2(rx - 26.0, cy - 13.0), pos2(rx, cy + 13.0));
-    if widgets::icon_button(ui, r, icon, false, &t, egui::Id::new(id)).on_hover_text(tip).clicked() {
-        let _ = app.session.execute(cmd, json!({}));
-    }
-    app.auto.add(&format!("header.{}", &id[4..]), r, tip);
-    rx = r.min.x - 4.0;
     // Appearance: Sync with System, Light, Dark (a monitor, sun or moon), one click to the next.
     let (icon, mode) = match app.session.prefs.appearance.appearance_mode.as_str() {
         "auto" => (Icon::Monitor, tr("Sync with System")),

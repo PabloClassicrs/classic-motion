@@ -1219,7 +1219,6 @@ Help
   ---
   Provide Feedback... | help.reportIssue
   ---
-  Classic Motion on GitHub | help.github
   Open Demo Project | file.openDemoProject
   [!mac] ---
   [!mac] About Classic Motion... | app.about
