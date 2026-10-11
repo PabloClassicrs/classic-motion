@@ -210,7 +210,7 @@ fn main() -> eframe::Result {
             }));
             app.hooks.pick_save = Some(Box::new(|name: &str| {
                 rfd::FileDialog::new()
-                    .add_filter(&format!("{APP_NAME} Project"), &["ecproj"])
+                    .add_filter(format!("{APP_NAME} Project"), &["ecproj"])
                     .set_file_name(name)
                     .save_file()
                     .map(|p| p.to_string_lossy().to_string())
@@ -226,13 +226,13 @@ fn main() -> eframe::Result {
                     };
                     rfd::MessageDialog::new()
                         .set_level(rfd::MessageLevel::Error)
-                        .set_title(&format!("{APP_NAME}: graphics device lost"))
+                        .set_title(format!("{APP_NAME}: graphics device lost"))
                         .set_description(format!("The graphics driver stopped responding, so {APP_NAME} has to close.{saved}"))
                         .show();
                 }));
             }
             app.hooks.pick_open_project = Some(Box::new(|| {
-                rfd::FileDialog::new().add_filter(&format!("{APP_NAME} Project"), &["ecproj", "ecprojx"]).pick_file().map(|p| p.to_string_lossy().to_string())
+                rfd::FileDialog::new().add_filter(format!("{APP_NAME} Project"), &["ecproj", "ecprojx"]).pick_file().map(|p| p.to_string_lossy().to_string())
             }));
             app.hooks.system_theme = appearance::service();
             app.hooks.audio_device = Some(Box::new(audio_out::open));
