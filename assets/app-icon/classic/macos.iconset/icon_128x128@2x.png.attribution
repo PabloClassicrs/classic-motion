@@ -1,7 +1,7 @@
 asset:        assets/app-icon/classic/macos.iconset/icon_128x128@2x.png
 title:        Classic's Automação app icon, 256x256 PNG
 author:       Classic's Automação (titular da marca)
-source:       original work
+source:       derivative of assets/app-icon/logo-icon-transparent.png (Classic's Automação, owner trademark)
 license:      Marca de Classic's Automação, todos os direitos reservados, uso autorizado neste fork, não licenciada sob MIT/Apache
 license-file: docs/brand/TRADEMARKS.md
 added:        2026-10-11 by Matiz
