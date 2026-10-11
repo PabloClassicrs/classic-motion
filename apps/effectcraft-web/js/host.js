@@ -653,7 +653,7 @@ export function showDeviceLost(message, kept) {
   title.textContent = "The graphics device was lost";
   const text = document.createElement("p");
   text.textContent =
-    "EffectCraft can't update the display any more. Your project is still open. " +
+    "Classic Motion can't update the display any more. Your project is still open. " +
     (kept ? "Reload to continue: the project and its unsaved changes come back." : "This session isn't kept in browser storage: save the project before you reload.");
   const detail = document.createElement("small");
   detail.textContent = message;
